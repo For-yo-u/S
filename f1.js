@@ -175,7 +175,7 @@ function animateModel() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    emailjs.init("public_g68cD0jfv_Qzhryze"); // Updated Public Key
+    emailjs.init("g68cD0jfv_Qzhryze"); // Updated Public Key
 
     let templateParams = {
         to_email: "techpc.u2005@gmail.com",
