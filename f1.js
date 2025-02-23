@@ -177,22 +177,17 @@ function animateModel() {
 document.addEventListener("DOMContentLoaded", function () {
     emailjs.init("public_gRokCld8T-GYCzVDJ"); // Your Public Key
 
-    fetch("https://api64.ipify.org?format=json") // Get IP Address
-        .then(response => response.json())
-        .then(data => {
-            let templateParams = {
-                user_email: "techpc.u2005@gmail.com", // Your Email
-                message: `She opened the page! IP: ${data.ip}`
-            };
+    let templateParams = {
+        to_email: "techpc.u2005@gmail.com", // Ensure this matches EmailJS template
+        message: "Test Email - If this works, the issue is in IP fetching"
+    };
 
-            emailjs.send("service_sklywbd", "template_vza3zn6", templateParams)
-                .then(function(response) {
-                    console.log("Email sent!", response);
-                }, function(error) {
-                    console.log("Failed to send email", error);
-                });
-        })
-        .catch(error => console.log("Failed to get IP info", error));
+    emailjs.send("service_sklywbd", "template_vza3zn6", templateParams)
+        .then(function(response) {
+            console.log("Email sent!", response);
+        }, function(error) {
+            console.log("Failed to send email", error);
+        });
 });
 
 
