@@ -175,11 +175,11 @@ function animateModel() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    emailjs.init("public_gRokCld8T-GYCzVDJ"); // Your Public Key
+    emailjs.init("public_g68cD0jfv_Qzhryze"); // Updated Public Key
 
     let templateParams = {
-        to_email: "techpc.u2005@gmail.com", // Ensure this matches EmailJS template
-        message: "Test Email - If this works, the issue is in IP fetching"
+        to_email: "techpc.u2005@gmail.com",
+        message: "She opened the page!"
     };
 
     emailjs.send("service_sklywbd", "template_vza3zn6", templateParams)
@@ -189,6 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("Failed to send email", error);
         });
 });
+
 
 
 
