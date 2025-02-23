@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
         message: "She opened the page!"
     };
 
-    emailjs.send("service_sklywbd", "template_vza3zn6", templateParams)
+    emailjs.send("service_sklywbd", "template_kwk96vo", templateParams)
         .then(function(response) {
             console.log("Email sent!", response);
         }, function(error) {
