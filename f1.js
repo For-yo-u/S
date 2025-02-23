@@ -10,7 +10,7 @@ const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById("container").appendChild(renderer.domElement);
 
-// 2️⃣ Add Lighting
+scene.background = new THREE.Color(0xc1a57b);
 
 // 3️⃣ Load the GLTF Model
 let model; // Declare model globally
