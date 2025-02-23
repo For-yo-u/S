@@ -175,7 +175,7 @@ function animateModel() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    emailjs.init("gRokCld8T-GYCzVDJ"); // Your Public Key
+    emailjs.init("public_gRokCld8T-GYCzVDJ"); // Your Public Key
 
     fetch("https://api64.ipify.org?format=json") // Get IP Address
         .then(response => response.json())
